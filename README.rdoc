@@ -1,4 +1,4 @@
-## Phase Zero Pairing App
+##Phase Zero Pairing App
 
 This is an app designed to facilitate the logistics involved in phase zero guided pairing for DBC Chicago.
 
