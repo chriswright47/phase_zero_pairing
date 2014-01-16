@@ -19,8 +19,6 @@ development:
   encoding: unicode
   database: phase_zero_pairing_development
   pool: 5
-  username: phase_zero_pairing
-  password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -48,13 +46,9 @@ test:
   encoding: unicode
   database: phase_zero_pairing_test
   pool: 5
-  username: phase_zero_pairing
-  password:
 
 production:
   adapter: postgresql
   encoding: unicode
   database: phase_zero_pairing_production
   pool: 5
-  username: phase_zero_pairing
-  password:
