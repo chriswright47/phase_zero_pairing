@@ -12,11 +12,16 @@
     <ul class='nav navbar-nav'>
       <li><%= link_to 'DBC Tutoring', home_path %></li>
       <li><%= link_to 'Members', users_path %></li>
-      <li><%= link_to 'Sign In', new_session_path %></li>
-      <li><%= link_to 'Create Account', new_user_path %></li>
+      <% if current_user %>
+        <li><%= link_to 'Logout', logout_path %></li>
+      <% else %>
+        <li><%= link_to 'Sign In', new_session_path %></li>
+        <li><%= link_to 'Create Account', new_user_path %></li>
+      <% end %>
     </ul>
   </div>
 </nav>
+<h2><%= bootstrap_flash %></h2>
 <div class='col-md-12'>
 <%= yield %>
 </div>

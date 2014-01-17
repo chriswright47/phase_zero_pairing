@@ -6,6 +6,7 @@ PhaseZeroPairing::Application.routes.draw do
 
   resources :appointments
 
-  resources :sessions, only: [:new, :delete]
+  resources :sessions, only: [:new, :create]
+  get '/logout' => 'sessions#destroy', as: 'logout'
 
 end

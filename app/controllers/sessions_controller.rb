@@ -18,7 +18,8 @@ class SessionsController < ApplicationController
     redirect_to path
   end
 
-  def delete
+  def destroy
     session.clear
+    redirect_to home_path
   end
 end
