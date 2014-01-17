@@ -1,0 +1,8 @@
+<h1>List of all upcoming pairing sessions</h1>
+<ul>
+  <% @appointments.each do |appointment| %>
+    <li>
+      <%= appointment.present_to_user %>
+    </li>
+  <% end %>
+</ul>
