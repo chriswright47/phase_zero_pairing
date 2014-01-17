@@ -4,4 +4,6 @@ PhaseZeroPairing::Application.routes.draw do
 
   resources :users
 
+  resources :appointments
+
 end
