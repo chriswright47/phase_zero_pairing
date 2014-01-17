@@ -6,4 +6,6 @@ PhaseZeroPairing::Application.routes.draw do
 
   resources :appointments
 
+  resources :sessions, only: [:new, :delete]
+
 end
