@@ -4,6 +4,8 @@ This is an app designed to facilitate the logistics involved in phase zero guide
 
 This is a currently work in progress and is in development.
 
+Current site is at phase0pairing.herokuapp.com
+
 janescharankov@yahoo.com
 
 christopher.wright47@gmail.com
