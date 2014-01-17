@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
   def index
-    @appointments = Appoinment.where(complete: false)
+    @appointments = Appointment.where(complete: false)
   end
 
   def show
