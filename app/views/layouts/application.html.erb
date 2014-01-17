@@ -12,6 +12,7 @@
     <ul class='nav navbar-nav'>
       <li><%= link_to 'DBC Tutoring', home_path %></li>
       <li><%= link_to 'Members', users_path %></li>
+      <li><%= link_to 'Upcoming Pairings', appointments_path %></li>
       <% if current_user %>
         <li><%= link_to 'Logout', logout_path %></li>
         <li><%= link_to 'Create Pairing Session', new_appointment_path %></li>

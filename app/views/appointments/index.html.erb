@@ -2,7 +2,7 @@
 <ul>
   <% @appointments.each do |appointment| %>
     <li>
-      <%= appointment.present_to_user %>
+      <%= link_to appointment.present_to_user, appointment_path(appointment) %>
     </li>
   <% end %>
 </ul>

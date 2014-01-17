@@ -3,7 +3,6 @@ class Appointment < ActiveRecord::Base
   has_many :users, through: :user_appointments
 
   def present_to_user
-    'need to implement this method which converts Date and Time to strings for user'
-    # something along lines of self.time ... + self.date ...
+    "#{self.date.strftime("%A %b %-d, %Y")} at #{self.start_time.strftime("%I:%M%p")}"
   end
 end
