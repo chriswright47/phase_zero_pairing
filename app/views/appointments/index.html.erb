@@ -3,6 +3,7 @@
   <% @appointments.each do |appointment| %>
     <li>
       <%= link_to appointment.present_to_user, appointment_path(appointment) %>
+      <%= "#{appointment.students.count}/2 signed up, guide is #{appointment.teacher.name}" %>
     </li>
   <% end %>
 </ul>

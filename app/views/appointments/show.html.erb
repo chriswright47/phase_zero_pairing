@@ -1,6 +1,17 @@
 <h1>Appointment page</h1>
 <h2>
-  <%= @appointment.present_to_user %>
+  <%= "#{@appointment.present_to_user}" %>
 </h2>
+<div class='teacher_name lead'><h3>Leader for pairing is <%= @appointment.teacher.name %></h3></div>
+<div class='pairing_students'>
+  <h4>Students currently signed up: (<%= @appointment.students.count %>/2 slots filled)</h4>
+  <% @appointment.students.each do |student| %>
+    <p class='lead'><%= student.name %></p>
+  <% end %>
+</div>
+<% if current_user == @appointment.teacher %>
+  <%= link_to 'Edit this Appointment', edit_appointment_path(@appointment) %>
+<% elsif current_user && @appointment.students.count < 2 && !@appointment.users.include?(current_user) %>
+  <button class='btn btn-success' id='join_appointment' data-appointment-id='<%= @appointment.id %>'>Add myself to this pairing</button>
+<% end %>
 
-<%= link_to 'Edit this Appointment', edit_appointment_path(@appointment) %>
