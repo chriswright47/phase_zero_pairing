@@ -29,8 +29,13 @@ class AppointmentsController < ApplicationController
 
   def update
     appointment = Appointment.find(params[:id])
-    appointment.update(appointment_params)
-    redirect_to appointment_path(appointment)
+    if request.xhr?
+      appointment.users << current_user
+      render partial: 'student', locals: {student: current_user}
+    else
+      appointment.update(appointment_params)
+      redirect_to appointment_path(appointment)
+    end
   end
 
   def destroy
