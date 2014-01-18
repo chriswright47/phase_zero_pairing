@@ -1,1 +1,13 @@
 <h1>Profile page for <%= @user.name %></h1>
+
+<div class='upcoming_appointments'>
+    <h2><%= @user.name %> is scheduled to participate in <%= pluralize(@appointments.count, 'appointment') %></h2>
+    <ul>
+      <% @appointments.each do |appointment| %>
+        <li>
+          <%= link_to appointment.present_to_user, appointment_path(appointment) %>
+        </li>
+      <% end %>
+    </ul>
+    <h3>In the past <%= @user.name %> has participated in a total of <%= pluralize(@user.appointments.count - @appointments.count, 'appointment') %></h3>
+</div>
