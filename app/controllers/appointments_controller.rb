@@ -14,6 +14,7 @@ class AppointmentsController < ApplicationController
   def create
     appointment = Appointment.new(appointment_params)
     appointment.teacher = current_user
+    appointment.users << current_user
     if appointment.save
       flash[:success] = 'Pairing session successfully created'
       redirect_to appointment_path(appointment)
