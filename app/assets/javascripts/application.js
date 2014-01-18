@@ -19,11 +19,23 @@
 
 $(function() {
   $(document).on('click', '#join_appointment', function(event) {
+    confirm('Are you sure you want to join this pairing? This cannot be undone.')
     var appointmentId = $(this).data('appointment-id')
     $.ajax({
       url: '/appointments/' + appointmentId,
       type: 'PATCH',
       success: function(name) {
+        window.location.reload();
+      }
+    });
+  });
+  $(document).on('click', '#complete_appointment', function(event) {
+    confirm('Are you sure you want to mark this as complete? This cannot be undone.')
+    var appointmentId = $(this).data('appointment-id')
+    $.ajax({
+      url: '/appointments/' + appointmentId,
+      type: 'PATCH',
+      success: function() {
         window.location.reload();
       }
     });
