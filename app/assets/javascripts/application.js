@@ -18,5 +18,14 @@
 
 
 $(function() {
-
+  $(document).on('click', '#join_appointment', function(event) {
+    var appointmentId = $(this).data('appointment-id')
+    $.ajax({
+      url: '/appointments/' + appointmentId,
+      type: 'PATCH',
+      success: function(name) {
+        window.location.reload();
+      }
+    });
+  });
 });
