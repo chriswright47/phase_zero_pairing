@@ -1,0 +1,11 @@
+<h4>Instructions for participating in a pairing session</h4>
+<ol>
+  <li>Navigate to the appropiate google hangout link from the pairing session page</li>
+  <% if current_user.teacher %>
+    <li>As the leader of a session, create a <%= link_to 'new code document for sharing', 'https://code.stypi.com' %> and share the link wth your students</li>
+  <% else %>
+    <li>Go to the code document link at <code>https://code.stypi.com</code> that your leader will give you once in the google hangout</li>
+  <% end %>
+  <li>Choose some practice problems that you would like to cover during the session and go over them together</li>
+  <li>If you are the leader for a pairing, make sure to visit the pairing page after and mark the session as completed</li>
+</ol>

@@ -14,8 +14,11 @@
       <li><%= link_to 'Members', users_path %></li>
       <li><%= link_to 'Upcoming Pairings', appointments_path %></li>
       <% if current_user %>
+        <% if current_user.teacher %>
+          <li><%= link_to 'Create Pairing Session', new_appointment_path %></li>
+        <% end %>
+        <li><%= link_to current_user.name, user_path(current_user) %></li>
         <li><%= link_to 'Logout', logout_path %></li>
-        <li><%= link_to 'Create Pairing Session', new_appointment_path %></li>
       <% else %>
         <li><%= link_to 'Sign In', new_session_path %></li>
         <li><%= link_to 'Create Account', new_user_path %></li>
@@ -23,7 +26,7 @@
     </ul>
   </div>
 </nav>
-<h2><%= bootstrap_flash %></h2>
+<h4><%= bootstrap_flash %></h2>
 <div class='col-md-12'>
 <%= yield %>
 </div>

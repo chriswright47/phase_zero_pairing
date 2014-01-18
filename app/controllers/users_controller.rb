@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @appointments = @user.appointments.where(complete: false)
   end
 
   def new
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
+      flash[:success] = "Thanks #{user.name}. Your account was successfully created"
       session[:user_id] = user.id
       redirect_to home_path
     else

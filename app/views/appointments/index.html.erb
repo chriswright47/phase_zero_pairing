@@ -1,4 +1,4 @@
-<h1>List of all upcoming pairing sessions</h1>
+<h1>List of all upcoming pairing sessions (<%= @appointments.count %> upcoming)</h1>
 <ul>
   <% @appointments.each do |appointment| %>
     <li>
@@ -7,3 +7,4 @@
     </li>
   <% end %>
 </ul>
+<%= render 'instructions' %>

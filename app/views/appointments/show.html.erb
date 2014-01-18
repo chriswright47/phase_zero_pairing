@@ -1,4 +1,4 @@
-<h1>Appointment page</h1>
+<h1>Pairing Session page</h1>
 <h2>
   <%= "#{@appointment.present_to_user}" %>
 </h2>
@@ -9,9 +9,15 @@
     <p class='lead'><%= student.name %></p>
   <% end %>
 </div>
-<% if current_user == @appointment.teacher %>
-  <%= link_to 'Edit this Appointment', edit_appointment_path(@appointment) %>
-<% elsif current_user && @appointment.students.count < 2 && !@appointment.users.include?(current_user) %>
-  <button class='btn btn-success' id='join_appointment' data-appointment-id='<%= @appointment.id %>'>Add myself to this pairing</button>
-<% end %>
+<% if @appointment.complete %>
+  <h3>This appointment has been completed</h3>
+<% else %>
+  <% if current_user == @appointment.teacher %>
+    <%= link_to 'Edit this Appointment', edit_appointment_path(@appointment), class: 'btn btn-info' %>
+    <button class='btn' id='complete_appointment' data-appointment-id='<%= @appointment.id %>'>Mark this appointment as completed</button>
+  <% elsif current_user && @appointment.students.count < 2 && !@appointment.users.include?(current_user) %>
+    <button class='btn btn-success' id='join_appointment' data-appointment-id='<%= @appointment.id %>'>Add myself to this pairing</button>
+  <% end %>
 
+  <%= render 'instructions' %>
+<% end %>
