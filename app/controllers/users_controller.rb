@@ -21,19 +21,30 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to home_path
     else
-      flash[:error] = user.errors.full_messages
+      flash[:warning] = user.errors.full_messages
       redirect_to new_user_path
     end
   end
 
   def edit
     @user = User.find(params[:id])
+    if current_user != @user
+      flash[:warning] = "You cannot edit another user's profile"
+      redirect_to home_path
+    end
   end
 
   def update
     user = User.find(params[:id])
     user.update(user_params)
-    redirect_to user_path(user)
+    user.teacher = params[:user][:teacher] == '1' ? true : false
+    if user.save
+      flash[:success] = "Thanks #{user.name}. Your account successfully updated."
+      redirect_to user_path(user)
+    else
+      flash[:warning] = user.errors.full_messages
+      redirect_to edit_user_path(user)
+    end
   end
 
   def delete
