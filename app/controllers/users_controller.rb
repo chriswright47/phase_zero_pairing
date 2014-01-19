@@ -15,12 +15,13 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
+    user.teacher = params[:user][:teacher] == '1' ? true : false
     if user.save
       flash[:success] = "Thanks #{user.name}. Your account was successfully created"
       session[:user_id] = user.id
       redirect_to home_path
     else
-      flash[:alert] = user.errors.full_messages
+      flash[:error] = user.errors.full_messages
       redirect_to new_user_path
     end
   end
