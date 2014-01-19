@@ -11,3 +11,8 @@
     </ul>
     <h3>In the past <%= @user.name %> has participated in a total of <%= pluralize(@user.appointments.count - @appointments.count, 'appointment') %></h3>
 </div>
+<% if @user == current_user %>
+  <div class='edit_profile'>
+    <%= link_to 'Edit My Profile', edit_user_path(@user) %>
+  </div>
+<% end %>
